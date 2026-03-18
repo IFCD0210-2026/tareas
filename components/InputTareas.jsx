@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 
-export default function Formulario({ setFormulario }) {
+export default function InputTareas({ añadirTareas }) {
     const [titulo, setTitulo] = useState("")
     const [texto, setTexto] = useState("")
 
@@ -10,10 +10,7 @@ export default function Formulario({ setFormulario }) {
         // if (!titulo.trim() || !texto.trim()) return
 
         // onAgregar({ titulo, texto })
-        setFormulario({
-            titulo: titulo,
-            texto: texto
-        })
+        añadirTareas(titulo, texto)
         setTitulo("")
         setTexto("")
     }
