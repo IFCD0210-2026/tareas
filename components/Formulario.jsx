@@ -1,22 +1,25 @@
 "use client"
 import { useState } from "react"
 
-export default function Formulario({ onAgregar }) {
+export default function Formulario({ setFormulario }) {
     const [titulo, setTitulo] = useState("")
     const [texto, setTexto] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (!titulo.trim() || !texto.trim()) return
+        // if (!titulo.trim() || !texto.trim()) return
 
-        onAgregar({ titulo, texto })
+        // onAgregar({ titulo, texto })
+        setFormulario({
+            titulo: titulo,
+            texto: texto
+        })
         setTitulo("")
         setTexto("")
     }
 
     return (
         <form
-            onSubmit={handleSubmit}
             className="w-full max-w-md mx-auto my-6 p-6 rounded-2xl shadow-lg bg-white border border-gray-200"
         >
             <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
@@ -26,10 +29,10 @@ export default function Formulario({ onAgregar }) {
             {/* Input título */}
             <div className="mb-4">
                 <input
+                    value={titulo}
                     type="text"
                     placeholder="Título"
-                    value={titulo}
-                    onChange={(e) => setTitulo(e.target.value)}
+                    onChange={(event) => setTitulo(event.target.value)}
                     className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition"
                 />
             </div>
@@ -49,6 +52,7 @@ export default function Formulario({ onAgregar }) {
             <button
                 type="submit"
                 className="w-full bg-emerald-500 hover:bg-emerald-600 active:scale-95 transition transform text-white font-semibold py-3 rounded-lg shadow-md"
+                onClick={handleSubmit}
             >
                 Añadir tarea
             </button>
