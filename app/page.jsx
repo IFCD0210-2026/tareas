@@ -6,19 +6,9 @@ import { useState } from "react";
 
 export default function Home() {
   // Definir el estado de tareas
-  const [tareas, setTareas] = useState([]); // Tareas ahora están vacías
+  const [tareas, setTareas] = useState(listaTareas);
 
-  // Añadir tarea
-  const añadirTareas = (tituloInput, textoInput) => {
-    // Crear la nueva tarea
-    const nuevaTarea = {
-      id: Date.now(),
-      titulo: tituloInput,
-      texto: textoInput
-    }
-    // Esto es el equivalente a tareas.push(nuevaTarea)
-    setTareas([...tareas, nuevaTarea]);
-  };
+
 
   // Eliminar tarea
   const eliminarTarea = (id) => {
@@ -29,7 +19,7 @@ export default function Home() {
     <main className="min-h-screen bg-emerald-800">
       <h1 className="text-center text-2xl text-bold uppercase py-4">Lista de tareas</h1>
       <div className="grid grid-cols-2">
-        <InputTareas añadirTareas={añadirTareas} />
+        <InputTareas tareas={tareas} setTareas={setTareas} />
         <section >
           {
             tareas.map(t => <Tarea key={t.id} tarea={t} eliminarTarea={eliminarTarea} />)

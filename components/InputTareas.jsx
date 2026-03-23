@@ -1,9 +1,22 @@
 "use client"
 import { useState } from "react"
 
-export default function InputTareas({ añadirTareas }) {
+export default function InputTareas({ tareas, setTareas }) {
+
     const [titulo, setTitulo] = useState("")
     const [texto, setTexto] = useState("")
+
+    // Añadir tareas
+    const añadirTareas = (tituloInput, textoInput) => {
+        // Crear la nueva tarea
+        const nuevaTarea = {
+            id: Date.now(), // DNI
+            titulo: tituloInput,
+            texto: textoInput
+        }
+        // Esto es el equivalente a tareas.push(nuevaTarea)
+        setTareas([...tareas, nuevaTarea]);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault()
