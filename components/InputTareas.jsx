@@ -18,7 +18,7 @@ export default function InputTareas({ tareas, setTareas }) {
         setTareas([...tareas, nuevaTarea]);
     };
 
-    const handleSubmit = (e) => {
+    const manejaElClick = (e) => {
         e.preventDefault()
         // if (!titulo.trim() || !texto.trim()) return
 
@@ -62,7 +62,7 @@ export default function InputTareas({ tareas, setTareas }) {
             <button
                 type="submit"
                 className="w-full bg-emerald-500 hover:bg-emerald-600 active:scale-95 transition transform text-white font-semibold py-3 rounded-lg shadow-md"
-                onClick={handleSubmit}
+                onClick={manejaElClick}
             >
                 Añadir tarea
             </button>
