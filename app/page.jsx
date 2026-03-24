@@ -26,7 +26,7 @@ export default function Home() {
           {
             tareas.length ?
               (
-                tareas.map(t => <Tarea key={t.id} tarea={t} eliminarTarea={eliminarTarea} />)
+                tareas.map(t => <Tarea tareas={tareas} setTareas={setTareas} key={t.id} tarea={t} eliminarTarea={eliminarTarea} />)
               )
               :
               (
